@@ -1,0 +1,44 @@
+{% extends "dashboard_layout.html" %}
+
+{% block body %}
+
+<div class="content-section">
+    <div class="table-responsive">
+       <h2>Source list</h2>
+       <!-- Pagination code -->
+       <!-- <button id="delete_selected">Delete Selected Product(s)</button> -->
+       <table class="table table-bordered">
+         <thead class="thead-light">
+           <tr>
+             <th><input id="check_all" type="checkbox"></th>
+             <th>#</th>
+             <th>FileName</th>
+             <th>FileType</th>
+             <th>Language</th>
+             <th>Domain</th>
+             <th>Tokens <i style="margin-left: 10%;" class="fas fa-download"></i></th>
+             <th>Translation <i style="margin-left: 10%;" class="fas fa-upload"></i> <i style="margin-left: 3%;"class="fas fa-edit"></i></th>
+             <th>Draft</th>
+             <th>Action</th>
+           </tr>
+         </thead>
+         <tbody>
+           
+           <tr>
+             <td><input type="checkbox" name="row-check" value=""></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+           </tr>
+          
+   
+         </tbody>
+       </table>
+   
+       
+       
+     </div>
+   </div>
+   {% endblock %}   

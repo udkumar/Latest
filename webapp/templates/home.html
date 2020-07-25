@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Welcome to Bridge Engine!{% endblock %}
+
+{% block content %}
+	<section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
+  <div class="container">
+  	<h1>Welcome to MAIIC!</h1>
+  	<h3>{{ "Your role is: " + session["role"] if session["role"]}}</h3>
+
+  </div>
+</section>
+
+{% endblock content %}
+{% block html_head %}
+ 
+{% endblock %}
