@@ -31,12 +31,17 @@
 					</div>
 				</div>
 				<div class="signup-form">
-					<form method="POST" class="register-form" id="register-form">
+					<div id="messages"> 
+			      {% for category, msg in get_flashed_messages(with_categories=true) %} 
+			        <p style="color: red;" class="messages flash-{{ category }}">{{ msg }}</p>
+			      {% endfor %} 
+			    </div>
+					<form action="/student_signup" method="POST" class="register-form" id="register-form">
 						<div class="form-row">
 							<div class="form-group">
 								<div class="form-input">
-									<label for="first_name" class="required">First name</label>
-									<input type="text" name="first_name" id="firstname" />
+									<label for="firstName" class="required">First name</label>
+									<input type="text" name="firstName" id="firstName" />
 								</div>
 								<div class="form-input">
 									<label for="email" class="">Student Email</label>
@@ -47,23 +52,19 @@
 									<input type="text" name="mobile" id="mobile" />
 								</div>
 								<div class="form-input">
-									<label for="class" class="required">Class</label>
-									<input type="text" name="class" id="class" />
+									<label for="class_standard" class="required">Class</label>
+									<input type="text" name="class_standard" id="class_standard" />
 								</div>
-
 								<div class="form-input">
 									<label for="edu_board" class="required">Education Board</label>
 									<input type="text" name="edu_board" id="edu_board" />
 								</div>
-
-
-
 							</div>
 
 							<div class="form-group">
 								<div class="form-input">
-									<label for="lastname" class="required"> Last name</label>
-									<input type="text" name="lastname" id="lastname" />
+									<label for="lastName" class="required"> Last name</label>
+									<input type="text" name="lastName" id="lastName" />
 								</div>
 								<div class="form-input">
 									<label for="alternet_email" class="required">Alternate Email</label>

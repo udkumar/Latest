@@ -83,7 +83,7 @@ def token_required(f):
 def index():
 	api_key = validate_api(request)
 	if api_key == 'MAIIC':
-		return jsonify({"message": "OK: Your api_key is Authorized to access Bridge Engine's APIs"}), 200
+		return jsonify({"message": "OK: Your api_key is Authorized to access MAIIC APIs"}), 200
 	else:
 		return jsonify({"message": "ERROR: Unauthorized, api_key is invalid"}), 401
 
@@ -121,7 +121,7 @@ def registration():
 		return jsonify({"message" : "Faculty created!"}), 201
 	else:
 		data = request.get_json()
-
+		print(data)
 		connection = get_db()
 		cursor = connection.cursor()
 		cursor.execute("select email from users where email=%s",(data['email'],))
@@ -143,7 +143,6 @@ def registration():
 			hashed_password = generate_password_hash(string_pass, method='pbkdf2:sha256')
 
 			first_name = data['firstName']
-			last_name = data['lastName']
 			student_email = data['email']
 
 			cursor.execute("INSERT INTO users (public_id, user_id, email, alternet_email, password, first_name, last_name, mobile_number, city, class_std, subject, edu_board, role_id) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",(str(uuid.uuid4()), auto_user_id, data['email'], data['alternet_email'], hashed_password, data['firstName'], data['lastName'], data['mobile'], data['city'], data['class_std'], data['subject'], data['edu_board'], data['role_id']))

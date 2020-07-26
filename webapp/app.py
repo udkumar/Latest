@@ -49,17 +49,20 @@ def student_signup():
 		edu_board = request.form.get('edu_board')
 
 		params = {"firstName" : firstName, "lastName":lastName, "email" : email, "alternet_email" : alternet_email,"mobile" : mobile, "city":city, "class_std" : class_standard,"subject":subject, "edu_board" : edu_board }
-
+		print(params)
 		headers = {"Content-type": "application/json"}
 
 		resp = requests.post(api_base_url + "/registration/",
 								 data=json.dumps(params), headers=headers)
 
 		res = resp.json()
+		print("res.....",res)
+		print("resp...",resp)
 		if resp.status_code == 409:
 			flash(res["message"])
 			return redirect(url_for('student_signup'))
 		if resp.status_code == 201:
+			flash(res["message"])
 			return redirect(url_for('student_login'))
 
 @app.route('/faculty_signup', methods=['GET', 'POST'])
@@ -109,6 +112,7 @@ def student_login():
 		if resp.status_code == 200:
 			session['token'] = res['token']
 			session['role'] = res['role']
+			flash("Login successfully!")
 			return redirect(url_for('student_dashboard'))
 
 @app.route('/faculty_login', methods=['GET', 'POST'])
@@ -144,8 +148,8 @@ def index():
 	# 	flash("not permitted this page!")
 	# 	return redirect(url_for("login")) 
 
-@app.route('/students_dashboard', methods=['GET'])
-def students_dashboard():
+@app.route('/student_dashboard', methods=['GET'])
+def student_dashboard():
 	if not session.get("token") is None:
 		return render_template('students_dashboard.html')
 	else:

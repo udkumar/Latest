@@ -9,42 +9,37 @@
 					<ul class="nav-menu">
             {% if "token" in session %}
 
-            {% if session["role"] in ['student', 'faculty', 'admin'] %}
-              <li class="nav-item">
-                <a class="nav-link" href="/">Dashboard</a>
-              </li>
-            {% endif %}
+	            {% if session["role"] in ['student', 'faculty', 'admin'] %}
+	              <li class="nav-item">
+	                <a class="nav-link" href="/">Dashboard</a>
+	              </li>
+	            {% endif %}
 
-            {% if session["role"] in ['faculty', 'admin'] %}
-              <li class="nav-item">
-                <a class="nav-link" href="/upload_videos">Videos Upload</a>
-              </li>
-            {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="/sources">Sources</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="/upload_translations" >Upload translation</a>
-          </li> -->
-        {% endif %}
+	            {% if session["role"] in ['faculty', 'admin'] %}
+	              <li class="nav-item">
+	                <a class="nav-link" href="/upload_videos">Videos Upload</a>
+	              </li>
+	            {% endif %}
+		        {% endif %}
+		        
             {% if "token" not in session %}
-						<li class="menu-active"><a href="/">Home</a></li>
-						<li><a href="courses">Courses</a></li>
-            
+							<li class="menu-active"><a href="/">Home</a></li>
+							<li><a href="courses">Courses</a></li>
+	            
 
-						<li class="menu-has-children"><a href="">Registration</a>
-							<ul>
-								<li><a href="/student_signup">Student Registration</a></li>
-								<li><a href="/faculty_signup">Faculty Registration</a></li>
-							</ul>
-						</li>
-						<li class="menu-has-children"><a href="">Login</a>
-							<ul>
-								<li><a href="/student_login">Student Login</a></li>
-								<li><a href="/faculty_login">Faculty Login</a></li>
-							</ul>
-						</li>
-            <li><a href="contact">Contact</a></li>
+							<li class="menu-has-children"><a href="">Registration</a>
+								<ul>
+									<li><a href="/student_signup">Student Registration</a></li>
+									<li><a href="/faculty_signup">Faculty Registration</a></li>
+								</ul>
+							</li>
+							<li class="menu-has-children"><a href="">Login</a>
+								<ul>
+									<li><a href="/student_login">Student Login</a></li>
+									<li><a href="/faculty_login">Faculty Login</a></li>
+								</ul>
+							</li>
+	            <li><a href="contact">Contact</a></li>
             {% else %}
             <li class="nav-item"><a class="nav-link"href="/logout" id="logout"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
             {% endif %}

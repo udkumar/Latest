@@ -159,13 +159,15 @@
                 <div class="row page-titles">
 
                     <div class="col-md-6 col-8 align-self-center">
-                        {{  if session["role"] in ['student']}}
-                        <h3 class="text-themecolor m-b-0 m-t-0">Student Dashboard</h3>
-                        {{ endif }}
-
-                        {{  if session["role"] in ['faculty']}}
-                        <h3 class="text-themecolor m-b-0 m-t-0">Faculty Dashboard</h3>
-                        {{ endif }}
+                            {% if "token" in session %}
+                                {% if session["role"] in ['student'] %}
+                                    <h3 class="text-themecolor m-b-0 m-t-0">Student Dashboard</h3>
+                                {% endif %}
+                                {% if session["role"] in ['faculty'] %}
+                                    <h3 class="text-themecolor m-b-0 m-t-0">Faculty Dashboard</h3>
+                                {% endif %}
+                           {% endif %}
+                      
                     </div>
 
                 </div>

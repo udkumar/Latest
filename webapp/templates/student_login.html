@@ -32,7 +32,12 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('/static/img/bg-01.png');">
 			<div class="wrap-login100 p-l-75 p-r-55 p-t-10 p-b-54">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="/student_login">
+					<div id="messages"> 
+			      {% for category, msg in get_flashed_messages(with_categories=true) %} 
+			        <p style="color: red;" class="messages flash-{{ category }}">{{ msg }}</p>
+			      {% endfor %} 
+			    </div>
 					<header id="header" class="fixed-center-header" role="banner">
 	                <a class="navbar-brand navbar-bg" href="/"><img class="img-fluid float-right" src="/static/img/llogo.png" alt="logo"></a>
 					<span class="login100-form-title p-b-49">
@@ -41,7 +46,7 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "User ID is reauired">
 						<span class="label-input100">User ID</span>
-						<input class="input100" type="text" name="user_id" placeholder="Type your User ID">
+						<input class="input100" type="text" name="user_id" name="user_id" placeholder="Type your User ID">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
@@ -61,8 +66,8 @@
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							
-							 
-							<h2><a href="" class="login100-form-btn">Login</a></h2>
+							<button type="submit" class="btn btn-primary btn-block" id='login-btn'>Sign in</button>
+							<!-- <h2><a href="" class="login100-form-btn">Login</a></h2> -->
 								
 							
 						</div>
